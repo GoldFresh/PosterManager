@@ -8,17 +8,18 @@ import ru.netology.domain.Poster;
 
 public class PosterManager {
     private Poster[] posters = new Poster[0];
-    private int defaultNumberOfMovies = 10;
+    private int defaultNumberOfMovies;
 
     PosterManager() {
-
+        this.defaultNumberOfMovies = 10;
     }
 
-    public PosterManager(int customMovieLength) {
-        if (customMovieLength > 0) {
-            defaultNumberOfMovies = customMovieLength;
-        }
+    public PosterManager(int defaultNumberOfMovies) {
+        this.defaultNumberOfMovies = defaultNumberOfMovies;
+    }
 
+    public Poster[] findAll(){
+        return posters;
     }
 
     public void addMovie(Poster movie) {
@@ -30,21 +31,20 @@ public class PosterManager {
         int lastMovie = tmp.length - 1;
         tmp[lastMovie] = movie;
         posters = tmp;
-
     }
 
     public Poster[] getFindLast() {
-        int moviesLength = posters.length;
-        if (moviesLength < defaultNumberOfMovies) {
-            defaultNumberOfMovies = moviesLength;
+        int moviesLength;
+        if (posters.length < this.defaultNumberOfMovies) {
+            moviesLength = posters.length;
+        } else {
+            moviesLength = this.defaultNumberOfMovies;
         }
-        Poster[] reverse = new Poster[defaultNumberOfMovies];
-        for (int i = 0; i < reverse.length; i++) {
-            int result = moviesLength - i - 1;
-            reverse[i] = posters[result];
+        Poster[] tmp = new Poster[moviesLength];
+        for (int i = 0; i < tmp.length; i++) {
+            tmp[i] = posters[posters.length - 1 - i];
 
         }
-        return reverse;
+        return tmp;
     }
-
 }

@@ -36,14 +36,14 @@ public class PosterManagerTest {
         manager.addMovie(movie9);
         manager.addMovie(movie10);
 
-        Poster[] expected = {movie10, movie9, movie8, movie7, movie6, movie5, movie4, movie3, movie2, movie1};
-        Poster[] actual = manager.getFindLast();
+        Poster[] expected = {movie1, movie2, movie3, movie4, movie5, movie6, movie7, movie8, movie9, movie10};
+        Poster[] actual = manager.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
-     public void shouldAddMovie() {
+    public void shouldAddMovie() {
         PosterManager manager = new PosterManager(11);
         manager.addMovie(movie1);
         manager.addMovie(movie2);
@@ -65,7 +65,7 @@ public class PosterManagerTest {
     }
 
     @Test
-    public void shouldFindLimit(){
+    public void shouldFindLast(){
         PosterManager manager = new PosterManager(5);
         manager.addMovie(movie1);
         manager.addMovie(movie2);
@@ -83,5 +83,6 @@ public class PosterManagerTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
 
 }
