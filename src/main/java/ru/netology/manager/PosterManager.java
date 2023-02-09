@@ -35,10 +35,10 @@ public class PosterManager {
 
     public Poster[] getFindLast() {
         int moviesLength;
-        if (posters.length < this.defaultNumberOfMovies) {
+        if (posters.length < defaultNumberOfMovies) {
             moviesLength = posters.length;
         } else {
-            moviesLength = this.defaultNumberOfMovies;
+            moviesLength = defaultNumberOfMovies;
         }
         Poster[] tmp = new Poster[moviesLength];
         for (int i = 0; i < tmp.length; i++) {
